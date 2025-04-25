@@ -23,7 +23,7 @@ class FeedbackController extends Controller
 
         return response()->json([
             'message' => $response->successful()
-                ? 'Thank you for your feedback!'
+                ? 'You have submitted your Project Details!'
                 : 'Failed to submit feedback',
             'success' => $response->successful()
         ], $response->status());
