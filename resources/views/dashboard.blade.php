@@ -37,50 +37,46 @@
                     @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="project_name" class="block text-gray-700">Project Owner's Name</label>
-                            <input type="text" id="project_name" name="name"
+                            <label for="name" class="block text-gray-700">Project Owner's Name</label>
+                            <input type="text" id="name" name="name"
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                         </div>
 
                         <div>
-                            <label for="project_category" class="block text-gray-700">Project Name</label>
-                            <input type="text" id="project_category" name="category"
+                            <label for="category" class="block text-gray-700">Project Name</label>
+                            <input type="text" id="category" name="category"
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                         </div>
                         <div>
-                            <label for="project_description" class="block text-gray-700">Description</label>
-                            <textarea id="project_description" name="description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+                            <label for="description" class="block text-gray-700">Description</label>
+                            <textarea id="description" name="description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                                 rows="3"></textarea>
                         </div>
                     </div>
                     <div class="mt-4">
                         <button type="submit"
-                            class="bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Add Project Info
-                        </button>
+                            class="bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add
+                            Project Info</button>
                     </div>
                 </form>
-
-                <!-- Feedback Form -->
                 <form id="feedbackForm" class="space-y-6">
-                    <div>
-                        <label for="feedback_name" class="block text-gray-700">Full Name</label>
-                        <input type="text" id="feedback_name" name="name"
+                    {{-- <div>
+                        <label for="name" class="block text-gray-700">Full Name</label>
+                        <input type="text" id="name" name="name"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                    </div>
+                    </div> --}}
 
                     <div>
-                        <label for="feedback_email" class="block text-sm font-medium text-gray-700">Email
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email
                             Address</label>
-                        <input type="email" id="feedback_email" name="email" required
+                        <input type="email" id="email" name="email" required
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                             placeholder="you@example.com">
                     </div>
 
                     <div>
-                        <label for="feedback_message" class="block text-sm font-medium text-gray-700">Additional
-                            Details</label>
-                        <textarea id="feedback_message" name="message" rows="4" required
+                        <label for="message" class="block text-sm font-medium text-gray-700">Additional Details</label>
+                        <textarea id="message" name="message" rows="4" required
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                             placeholder="Add something if you want to..."></textarea>
                     </div>
@@ -136,7 +132,7 @@
                                         Edit
                                     </a>
                                     <form method="POST" action="{{ route('project.destroy', $project->id) }}"
-                                        class="flex items-centerr">
+                                        class="flex items-center">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
@@ -177,9 +173,9 @@
             responseMessage.classList.add('hidden');
 
             const payload = {
-                name: document.getElementById('feedback_name').value,
-                email: document.getElementById('feedback_email').value,
-                message: document.getElementById('feedback_message').value
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
             };
 
             try {
@@ -210,15 +206,16 @@
                 console.error('Submission error:', error);
             } finally {
                 submitButton.disabled = false;
-                buttonText.textContent = 'Submit Project Details';
+                buttonText.textContent = 'Submit Portfolio Details: ';
                 spinner.classList.add('hidden');
 
-                if (!responseMessage.classList.contains('hidden')) {
+                if (responseMessage.classList.contains('hidden') === false) {
                     setTimeout(() => {
                         responseMessage.classList.add('hidden');
                     }, 5000);
                 }
             }
-        });
+        })
     </script>
+
 </x-app-layout>
