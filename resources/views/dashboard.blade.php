@@ -93,7 +93,7 @@
                 </form>
 
                 <!-- Portfolio Projects -->
-                {{-- <div class="my-8">
+                <div class="my-8">
                     <h3 class="text-lg font-medium mb-4">Portfolio Gallery</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         @forelse ($projects as $project)
@@ -150,11 +150,11 @@
                         @empty
                             <p class="col-span-3 text-gray-500">No projects available.</p>
                         @endforelse
-                    </div> --}}
-            </div>
+                    </div>
+                </div>
 
+            </div>
         </div>
-    </div>
     </div>
 
     <script>
