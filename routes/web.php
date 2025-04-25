@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
@@ -31,6 +32,7 @@ Route::put('/project/{project}', [ProjectController::class, 'update'])->name('pr
 Route::get('/portfolio/{project}', [ProjectController::class, 'portfolio'])->name('portfolio');
 Route::delete('/images/{image}', [ImageController::class, 'destroy'])->name('image.destroy');
 
+//Feedback
+Route::post('/feedback', [FeedbackController::class, 'store']);
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
